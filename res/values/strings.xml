@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">MyBookList</string>
+    <string name="hello_world">Hello world!</string>
+    <string name= "db_name">mydata</string>
+	<string name="db_version">1</string>
+
+</resources>

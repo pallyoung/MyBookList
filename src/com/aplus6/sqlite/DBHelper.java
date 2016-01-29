@@ -18,7 +18,7 @@ public class DBHelper extends SQLiteOpenHelper {
 	public void onCreate(SQLiteDatabase db) {
 		// TODO Auto-generated method stub
 		db.execSQL("create table list (id INTEGER PRIMARY KEY AUTOINCREMENT,l_name text,c_time int,m_time int)");
-		db.execSQL("create table book (id INTEGER PRIMARY KEY AUTOINCREMENT,b_name text,author text, process int,p_count int,r_p_count,c_time int,r_time int)");
+		db.execSQL("create table book (id INTEGER PRIMARY KEY AUTOINCREMENT,b_name text,author text, process int,p_count int,r_p_count,c_time int,r_time int,l_id int)");
 	}
 
 	@Override

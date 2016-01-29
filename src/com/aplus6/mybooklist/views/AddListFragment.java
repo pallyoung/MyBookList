@@ -26,6 +26,7 @@ public class AddListFragment extends Fragment {
 	private FragmentManager fm;
 	private EditText listName;
 	private MainActivity activity;
+	private MBookListManager mblManager;
 	@Override  
     public View onCreateView( LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState)  
     {  
@@ -33,6 +34,7 @@ public class AddListFragment extends Fragment {
 		cancel = (Button)view.findViewById(R.id.cancel);
 		ok = (Button)view.findViewById(R.id.ok);
 		listName = (EditText) view.findViewById(R.id.list_name);
+		mblManager = MBookListManager.getInstance();
 		fm = getFragmentManager();
 		activity = (MainActivity)getActivity();
 		cancel.setOnClickListener(new OnClickListener(){
@@ -58,7 +60,7 @@ public class AddListFragment extends Fragment {
 					bl.setName(l_name);
 					bl.setC_time(System.currentTimeMillis());
 					bl.setM_time(System.currentTimeMillis());
-					MBookListManager.addMBookList(bl);
+					mblManager.addItem(bl);
 					fm.popBackStack();
 				}
 				

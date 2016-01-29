@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.IOException;
 
 import com.aplus6.mybooklist.servieces.DBServices;
-import com.aplus6.mybooklist.servieces.MBookListManager;
 
 import android.content.Context;
 import android.os.Environment;
@@ -28,7 +27,6 @@ public class Config {
 	}	
 	public void checkEnv(){
 		DBServices.init(CTX);
-		MBookListManager.init();
 		File f2 = new File(DATA_PATH);
 		if(!f2.exists()){
 			f2.mkdirs();

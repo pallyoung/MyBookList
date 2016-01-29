@@ -7,41 +7,26 @@ import java.util.Iterator;
 import com.aplus6.mybooklist.models.MBookList;
 
 
-public class MBookListManager {
-	private static  ArrayList<MBookList> myList;
-	private static HashSet<OnListChangedListener> hs;
-	public static void init(){
-		myList = DBServices.getBookList();
-		hs = new HashSet<OnListChangedListener>();
+public class MBookListManager extends ListManager<MBookList> {
+	
+	private MBookListManager(){
+		super();
+		list = DBServices.getBookList();
 	}
-	public static  ArrayList<MBookList> getMBookLists(){
-		if(myList==null){
-			
-		}
-		return myList;
+	public static MBookListManager getInstance(){
+		return LazyLoad.mblManager;
 	}
-	public static void addMBookList(MBookList bl){
+	@Override
+	public void addItem(MBookList bl){
+		super.addItem(bl);
 		DBServices.addBookList(bl);
-		myList.add(bl);
-		notifyListChange();
 	}
-	public static void removeMBookListById(int id){
-		notifyListChange();
+	@Override
+	public void removeItem(MBookList bl){
+		super.removeItem(bl);
+		DBServices.removeBookList(bl.getId());
 	}
-	public static void updateMBookListById(MBookList bl){
-		notifyListChange();
-	}
-	private static void notifyListChange(){
-		Iterator<OnListChangedListener> iter = hs.iterator();
-		while(iter.hasNext()){
-			OnListChangedListener cb = iter.next();
-			cb.onReceive(myList);
-		}
-	}
-	public static void setOnListChangedListener(OnListChangedListener cb){
-		hs.add(cb);
-	}
-	public abstract static class  OnListChangedListener{
-		public abstract void onReceive(ArrayList<MBookList> value);
+	private static class LazyLoad  {
+		private final static 	MBookListManager mblManager = new MBookListManager();
 	}
 }

@@ -50,4 +50,18 @@ public class Book {
 	private long process;
 	private long p_count;
 	private long h_p_count;
+	private long l_id;
+	private long id;
+	public long getId() {
+		return id;
+	}
+	public void setId(long id) {
+		this.id = id;
+	}
+	public long getL_id() {
+		return l_id;
+	}
+	public void setL_id(long l_id) {
+		this.l_id = l_id;
+	}
 }

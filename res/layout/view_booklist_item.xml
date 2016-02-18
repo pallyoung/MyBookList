@@ -8,14 +8,15 @@
 	     android:layout_height="match_parent"
 	     android:id="@+id/item_main"
 	     android:layout_gravity="start|center"
-	     android:background="#de4" >
+	 	 android:background="@drawable/bg_item" >
 	     <TextView
 			android:id="@+id/list_name"
 			android:layout_width="wrap_content"
 			android:layout_height="match_parent"
 			android:gravity="center"
 			android:background="#acd"
-			android:text="TextView" />
+			android:textColor="@color/item"
+			android:text="@string/default_book_name" />
 	 </RelativeLayout>
 	 <LinearLayout
 	     android:layout_width="wrap_content"
@@ -24,9 +25,12 @@
 	     android:id="@+id/item_left" >
 	    <Button
 		    android:id="@+id/delBtn"
-			android:layout_width="100dp"
+			android:layout_width="60dp"
 			android:layout_height="match_parent"
-			android:text="删除"/>
+			android:background="@drawable/bg_btn"
+			android:textColor="@color/white"
+			android:textSize="@dimen/item_text_size"
+			android:text="@string/delete"/>
 	 </LinearLayout>
 		            
 </LinearLayout>

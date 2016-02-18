@@ -33,44 +33,83 @@ public class SwipeView extends HorizontalScrollView {
 		content.setOrientation(LinearLayout.HORIZONTAL);	
 		this.addView(wrapper,new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT));
 		wrapper.addView(content);
-		setOnTouchListener(new OnTouchListener(){
-			@Override
-			public boolean onTouch(View v, MotionEvent me) {
-				final Runnable runner;
-				final int w = wrapper.getMeasuredWidth()-content.getMeasuredWidth();
-				final int x = getScrollX();
-				View parent = ((View) getParent());
-				switch(me.getAction()){
-				case MotionEvent.ACTION_DOWN:{
-					if(parent.getTag()!=null&&(!parent.getTag().equals(SwipeView.this))){
-						((SwipeView)parent.getTag()).smoothScrollToStart();
-					}
-					parent.setTag(SwipeView.this);				
-					break;
-				}
-				case MotionEvent.ACTION_UP:
-					if(x<100){
-						runner = new Runnable(){
-							@Override
-							public void run() {
-								smoothScrollTo(0, 0);						
-							}							
-						};
-					}else{
-						runner = new Runnable(){
-							@Override
-							public void run() {
-								smoothScrollTo(w, 0);						
-							}							
-						};
-					}
-					SwipeView.this.post(runner);				
-					break;
-				}
-				return false;
+//		setOnTouchListener(new OnTouchListener(){
+//			@Override
+//			public boolean onTouch(View v, MotionEvent me) {
+//				final Runnable runner;
+//				final int w = wrapper.getMeasuredWidth()-content.getMeasuredWidth();
+//				final int x = getScrollX();
+//				View parent = ((View) getParent());
+//				switch(me.getAction()){
+//				case MotionEvent.ACTION_DOWN:{
+//					if(parent.getTag()!=null&&(!parent.getTag().equals(SwipeView.this))){
+//						((SwipeView)parent.getTag()).smoothScrollToStart();
+//					}
+//					parent.setTag(SwipeView.this);				
+//					break;
+//				}
+//				case MotionEvent.ACTION_UP:
+//					if(x<100){
+//						runner = new Runnable(){
+//							@Override
+//							public void run() {
+//								smoothScrollTo(0, 0);						
+//							}							
+//						};
+//					}else{
+//						runner = new Runnable(){
+//							@Override
+//							public void run() {
+//								smoothScrollTo(w, 0);						
+//							}							
+//						};
+//					}
+//					SwipeView.this.post(runner);				
+//					break;
+//				}
+//				return false;
+//			}
+//			
+//		});
+	}
+	@Override
+	public boolean onTouchEvent(MotionEvent me){
+		if(me.getAction()==MotionEvent.ACTION_UP){
+			final Runnable runner;
+			final int w = wrapper.getMeasuredWidth()-content.getMeasuredWidth();
+			final int x = getScrollX();
+			View parent = ((View) getParent());
+			if(x<100){
+				runner = new Runnable(){
+					@Override
+					public void run() {
+						smoothScrollTo(0, 0);						
+					}							
+				};
+			}else{
+				runner = new Runnable(){
+					@Override
+					public void run() {
+						smoothScrollTo(w, 0);						
+					}							
+				};
 			}
-			
-		});
+			SwipeView.this.post(runner);	
+		}
+		return super.onTouchEvent(me);
+	}
+	@Override
+	public boolean onInterceptTouchEvent(MotionEvent me){
+		View parent = ((View) getParent());
+		switch(me.getAction()){
+		case MotionEvent.ACTION_DOWN:
+			if(parent.getTag()!=null&&(!parent.getTag().equals(SwipeView.this))){
+				((SwipeView)parent.getTag()).smoothScrollToStart();
+			}
+			parent.setTag(SwipeView.this);				
+			break;
+		}
+		return super.onInterceptTouchEvent(me);
 	}
 	public void inflateContent(View view){
 		content.addView(view,new LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.MATCH_PARENT));

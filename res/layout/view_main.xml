@@ -3,10 +3,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="${relativePackage}.${activityClass}"
+    android:background="@drawable/bg_main"
     android:id="@+id/body">
     <LinearLayout
         android:id="@+id/titleBar"
         android:layout_width="match_parent"
+        android:layout_gravity="center"
         android:layout_height="60dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
@@ -17,10 +19,16 @@
 
         <TextView
             android:id="@+id/title"
+            android:gravity="start|center"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            android:layout_marginTop="18dp"
+            android:paddingLeft="20dp"
+            android:paddingStart="20dp"
+            android:textColor="@color/title_color"
+            android:textStyle="bold"
+            android:paddingEnd="20dp"
+            android:textSize = "@dimen/title_text_size"
             android:text="@string/app_name" />
     </LinearLayout>
 
@@ -32,6 +40,8 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
         android:layout_below="@+id/titleBar"
+        android:divider="@drawable/bg_br"
+        android:dividerHeight="1px"
         android:layout_marginLeft="0dp"
         android:layout_marginStart="0dp" >
     </ListView>
@@ -42,9 +52,13 @@
         android:layout_height="60dp"
         android:layout_above="@+id/mybooklistview"
        	android:layout_marginBottom ="20dp"
+       	android:layout_marginRight="20dp"
+       	android:layout_marginEnd="20dp"
+       	android:gravity="center"
        	android:layout_alignParentBottom = "true"
        	android:layout_alignParentRight = "true"
        	android:layout_alignParentEnd = "true"
-        android:text="Button" />
+       	android:background="@drawable/bg_btn_add"
+        android:text="" />
 
 </RelativeLayout>

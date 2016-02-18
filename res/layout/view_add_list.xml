@@ -2,54 +2,69 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#1111">
-
+    android:background="#88111111">
     <LinearLayout
+        android:orientation="vertical"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center|center" 
-        android:layout_above="@+id/bottom">
+        android:background="@drawable/bg_add_list"
+    	android:layout_height="300dp">
+	      <LinearLayout
+	        android:layout_marginTop="60dp"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_gravity="center">
+	
+	        <EditText
+	            android:background="@drawable/bg_edit_view"
+	            android:id="@+id/list_name"
+	            android:layout_width="0dp"
+	            android:layout_height="@dimen/item_height_s"
+	            android:layout_weight="1"
+	            android:hint="@string/list_name_hint"
+	            android:textColor="@color/gray"
+	            android:textSize="@dimen/common" >	
+	            <requestFocus />
+	        </EditText>
+	
+	   	 </LinearLayout>
 
-        <EditText
-            android:id="@+id/list_name"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:hint="为你的书单起个名字吧"
-            android:ems="10" >
-
-            <requestFocus />
-        </EditText>
-
+	    <RelativeLayout
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="20dp"
+	        android:id ="@+id/bottom">
+	        <Button
+	            android:id="@+id/cancel"
+	            android:layout_width="@dimen/l"
+	            android:layout_height="@dimen/item_height_s"
+	            android:layout_alignParentLeft="true"
+	            android:layout_alignParentStart="true"
+	            android:layout_alignParentTop="true"
+	            android:layout_marginLeft="@dimen/margin_double"
+	            android:layout_marginStart="@dimen/margin_double"
+	            android:background="@drawable/bg_btn_1"
+	            android:textColor="@color/white"
+	            android:textSize="@dimen/common"
+	            android:text="@string/cancel" />	
+	        <Button
+	            android:id="@+id/ok"
+	            android:layout_width="@dimen/l"
+	            android:layout_height="@dimen/item_height_s"
+	            android:layout_alignParentRight="true"
+	            android:layout_alignParentEnd="true"
+	            android:layout_alignParentTop="true"
+	            android:layout_marginRight="@dimen/margin_double"
+	            android:layout_marginEnd="@dimen/margin_double"
+	            android:background="@drawable/bg_btn_1"
+	            android:textColor="@color/white"
+	            android:textSize="@dimen/common"
+	            android:text="@string/confirm" />
+	    </RelativeLayout>
     </LinearLayout>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:id ="@+id/bottom">
-        <Button
-            android:id="@+id/cancel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="37dp"
-            android:layout_marginStart="37dp"
-            android:text="取消" />
-
-        <Button
-            android:id="@+id/ok"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginRight="46dp"
-            android:layout_marginEnd="46dp"
-            android:text="确定" />
-
-    </RelativeLayout>
+    
 
 </RelativeLayout>

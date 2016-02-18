@@ -1,7 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
     
+	android:background="@drawable/bg_main">
+    
+	 <LinearLayout
+        android:id="@+id/titleBar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_height"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="0dp" >
 
+        <TextView
+            android:layout_marginLeft="@dimen/btn_width_small"
+            android:layout_marginStart="@dimen/btn_width_small"
+            android:id="@+id/title"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sub_title_text_size"
+            android:text="@string/app_name" />
+        <Button
+            android:id="@+id/addBookBtn"
+            android:layout_width="@dimen/btn_width_small"
+            android:background="@drawable/bg_btn_green"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+    <ListView 
+       android:id ="@+id/booksListView" 
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_alignParentLeft="true"
+       android:layout_alignParentStart="true"
+       android:layout_alignParentBottom="true"
+       android:layout_below="@+id/titleBar"
+       android:layout_marginLeft="0dp"
+       android:layout_marginStart="0dp"></ListView>
 </RelativeLayout>

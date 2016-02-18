@@ -70,7 +70,9 @@ public class DBServices {
 	}
 	public static ArrayList<Book> getBooksByList(long list_id){
 		ArrayList<Book> list = new ArrayList<Book>();
-		Cursor c = SDB.query(T_BOOK, null, "l_id", new String[]{String.valueOf(list_id)}, null, null, "m_time");
+		Cursor c = SDB.query(T_BOOK, null, "l_id=?", new String[]{String.valueOf(list_id)}, null, null, "c_time");
+		//Cursor c = SDB.query(T_BOOK, null, null, null, null, null, "c_time");
+		Log.e("12121212121", String.valueOf(c.getCount()));
 		if(c.moveToFirst()){//判断游标是否为空
 			while(!c.isAfterLast()){
 				Book l = new Book();
@@ -79,7 +81,7 @@ public class DBServices {
 		        l.setAuthor(c.getString(c.getColumnIndex("author")));
 		        l.setLast_read_time(c.getLong(c.getColumnIndex("r_time")));
 		        l.setP_count(c.getLong(c.getColumnIndex("p_count")));
-		        l.setH_p_count(c.getLong(c.getColumnIndex("h_p_count")));	        
+		        l.setH_p_count(c.getLong(c.getColumnIndex("r_p_count")));	        
 		        l.setC_time(c.getLong(c.getColumnIndex("c_time")));
 		        l.setProcess(c.getInt(c.getColumnIndex("process")));
 		        list.add(l);
@@ -93,11 +95,12 @@ public class DBServices {
 	}
 	public static void addBook(Book b){
 		ContentValues cv = new ContentValues();
+		cv.put("l_id",b.getL_id());
 		cv.put("b_name",b.getName());
 		cv.put("r_time",b.getLast_read_time());
 		cv.put("c_time", b.getC_time());
 		cv.put("author", b.getAuthor());
-		cv.put("h_p_count", b.getH_p_count());
+		cv.put("r_p_count", b.getH_p_count());
 		cv.put("p_count", b.getP_count());
 		cv.put("process", b.getProcess());
 		SDB.insert(T_BOOK,null, cv);

@@ -8,7 +8,7 @@ public class BooksManager extends ListManager<Book> {
 	private BooksManager(){
 		super();
 	}
-	public BooksManager getInstance(){
+	public static BooksManager getInstance(){
 		return LazyLoader.bManager;
 	}
 	@Override

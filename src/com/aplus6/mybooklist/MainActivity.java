@@ -12,6 +12,6 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		config = new Config(this);
 		config.checkEnv();	
-		setContentView(R.layout.activity_main);			
+		setContentView(R.layout.activity_main);		
 	}
 }

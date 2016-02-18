@@ -12,8 +12,10 @@ import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
@@ -31,6 +33,14 @@ public class AddListFragment extends Fragment {
     public View onCreateView( LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState)  
     {  
 		View view  = inflater.inflate(R.layout.view_add_list, container, false);
+		view.setOnTouchListener(new OnTouchListener(){
+
+			@Override
+			public boolean onTouch(View arg0, MotionEvent arg1) {
+				return true;
+			}
+			
+		});
 		cancel = (Button)view.findViewById(R.id.cancel);
 		ok = (Button)view.findViewById(R.id.ok);
 		listName = (EditText) view.findViewById(R.id.list_name);
@@ -51,7 +61,6 @@ public class AddListFragment extends Fragment {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				String l_name = listName.getText().toString();
-				Log.e("eeeeeeeeeeeee", l_name);
 				if(l_name.equals("")){
 					Toast toast=Toast.makeText(activity, "请输入一个书单名", Toast.LENGTH_LONG);
 					toast.show();
@@ -67,5 +76,5 @@ public class AddListFragment extends Fragment {
 			}		
 		});
         return view;  
-    }  
+    }
 }

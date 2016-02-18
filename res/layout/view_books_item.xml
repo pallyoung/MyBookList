@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:orientation="horizontal" >
+    
+	<RelativeLayout
+	    android:layout_width="match_parent"
+    	android:layout_height="match_parent"
+    	android:id="@+id/item_main"
+	 	android:background="@drawable/bg_item" 
+	    android:layout_gravity="start|center">
+	    <TextView
+			android:id="@+id/list_name"
+			android:layout_width="wrap_content"
+			android:layout_height="match_parent"
+			android:gravity="center"
+			android:background="#acd"
+			android:textColor="@color/item"
+			android:text="@string/default_book_name" />
+	</RelativeLayout>
+	<LinearLayout
+	    android:layout_width="wrap_content"
+    	android:layout_height="match_parent"
+    	android:orientation="horizontal"
+    	android:id="@+id/item_left">	
+    	<Button
+    	    android:layout_width="@dimen/btn_width_small"
+    	    android:id="@+id/delBtn"
+    	    android:layout_height="match_parent"
+    	    android:background="@drawable/bg_btn"
+			android:textColor="@color/white"
+			android:textSize="@dimen/item_text_size"
+    	    android:text="@string/delete">    
+    	</Button>    
+	</LinearLayout>
+</LinearLayout>

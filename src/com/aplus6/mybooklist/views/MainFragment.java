@@ -51,7 +51,6 @@ public class MainFragment extends Fragment {
 
 			@Override
 			public boolean onTouch(View v, MotionEvent me) {
-				// TODO Auto-generated method stub
 				if(me.getAction()==MotionEvent.ACTION_DOWN){
 					if(lv.getTag()!=null){
 						((SwipeView)lv.getTag()).smoothScrollToStart();

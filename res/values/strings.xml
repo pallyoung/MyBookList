@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">MyBookList</string>
+    <string name="app_name">书单</string>
     <string name="hello_world">Hello world!</string>
     <string name= "db_name">mydata</string>
 	<string name="db_version">1</string>
-
+	
+	<string name="default_book_name">未知</string>
+	<string name="default_author">佚名</string>
+	<string name="list_name_hint">为你的书单起个名字吧</string>
+	
+	<string name="delete">删除</string>
+	<string name="confirm">确定</string>
+	<string name="cancel">取消</string>
+	
 </resources>

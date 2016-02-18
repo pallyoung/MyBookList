@@ -3,11 +3,16 @@ package com.aplus6.mybooklist.viewHelper;
 import java.util.ArrayList;
 
 import com.aplus6.mybooklist.R;
+import com.aplus6.mybooklist.models.Book;
 import com.aplus6.mybooklist.models.MBookList;
 import com.aplus6.mybooklist.servieces.MBookListManager;
 import com.aplus6.mybooklist.servieces.OnListChangedListener;
+import com.aplus6.mybooklist.views.BooksFragment;
 import com.aplus6.mybooklist.views.SwipeView;
 
+import android.app.Activity;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -63,7 +68,7 @@ public class MyListViewAdapter extends BaseAdapter {
 		if(v==null){
 			v = new SwipeView(ctx);
 			LinearLayout view = (LinearLayout)inflater.inflate(R.layout.view_booklist_item, null);
-			LayoutParams lp = new LayoutParams(LayoutParams.MATCH_PARENT, 100);
+			LayoutParams lp = new LayoutParams(LayoutParams.MATCH_PARENT, 200);
 			v.setLayoutParams(lp);
 			holder  = new ViewHolder();
 			holder.item_left = view.findViewById(R.id.item_left);
@@ -85,8 +90,19 @@ public class MyListViewAdapter extends BaseAdapter {
 		}else{
 			holder = (ViewHolder) v.getTag();
 		}
-		//			android:gravity="center_vertical|start"		
+		holder.item_main.setOnClickListener(new OnClickListener(){
 
+			@Override
+			public void onClick(View v) {
+				FragmentManager fm = ((Activity)ctx).getFragmentManager();
+				BooksFragment bf = new BooksFragment((MBookList)holder.listName.getTag());
+				FragmentTransaction tx = fm.beginTransaction(); 
+			    tx.add(android.R.id.content,bf, "addList");
+			    tx.addToBackStack(null);
+			    tx.commit();
+			}
+			
+		});
 		MBookList bl= list.get(p);
 		holder.listName.setText(bl.getName());
 		holder.listName.setTag(bl);
